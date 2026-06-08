@@ -1,0 +1,30 @@
+export const assets = {
+  logo: "/images/logo.png",
+  map: "/images/map.png",
+  mapUserPin: "/images/map-user-pin.png",
+  mapMarkers: {
+    carrot: "/images/map-markers/carrot.png",
+    grape: "/images/map-markers/grape.png",
+    strawberry: "/images/map-markers/strawberry.png",
+    corn: "/images/map-markers/corn.png",
+    potato: "/images/map-markers/potato.png",
+  },
+  organicBadge: "/images/organic-badge.png",
+  cartIcon: "/images/cart-icon.png",
+  storeHero: "/images/store-hero.png",
+  farmerProfile: "/images/farmer-profile.png",
+  farmRoadview: "/images/farm-roadview.png",
+  reviewPhoto: "/images/review-photo.png",
+  farms: {
+    carrot: "/images/farm-carrot.png",
+    grape: "/images/farm-grape.png",
+    strawberry: "/images/farm-strawberry.png",
+    corn: "/images/farm-corn.png",
+    potato: "/images/farm-potato.png",
+  },
+  products: {
+    strawberry500: "/images/product-strawberry.png",
+    strawberry1kg: "/images/product-strawberry.png",
+    strawberryGift: "/images/product-gift.png",
+  },
+} as const;
