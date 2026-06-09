@@ -106,12 +106,9 @@ export default function StorePageClient({ params }: StorePageProps) {
             {formatReviewTitle(farm.reviewCount)}
           </h2>
           {farm.reviews.length > 0 ? (
-            <Link
-              href={routes.storeReviews(farm.id)}
-              className="text-[13px] font-medium text-[#8e8e93]"
-            >
+            <span className="text-[13px] font-medium text-[#8e8e93]">
               전체 보기 {">"}
-            </Link>
+            </span>
           ) : null}
         </div>
         {farm.reviews.length > 0 ? (

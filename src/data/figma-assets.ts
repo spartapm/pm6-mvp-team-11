@@ -27,4 +27,33 @@ export const assets = {
     strawberry1kg: "/images/product-strawberry.png",
     strawberryGift: "/images/product-gift.png",
   },
+  reviews: {
+    carrot: {
+      r1: "/images/reviews/carrot-review-1.png",
+      r2: "/images/reviews/carrot-review-2.png",
+    },
+    grape: {
+      r1: "/images/reviews/grape-review-1.png",
+      r2: "/images/reviews/grape-review-2.png",
+    },
+    strawberry: {
+      r1: "/images/reviews/strawberry-review-1.png",
+      r2: "/images/reviews/strawberry-review-2.png",
+    },
+    corn: {
+      r1: "/images/reviews/corn-review-1.png",
+      r2: "/images/reviews/corn-review-2.png",
+    },
+    potato: {
+      r1: "/images/reviews/potato-review-1.png",
+      r2: "/images/reviews/potato-review-2.png",
+    },
+  },
+  certificates: {
+    carrot: "/images/certificates/carrot.png",
+    grape: "/images/certificates/grape.png",
+    strawberry: "/images/certificates/strawberry.png",
+    corn: "/images/certificates/corn.png",
+    potato: "/images/certificates/potato.png",
+  },
 } as const;

@@ -15,31 +15,114 @@ function wireframeLocation(id: keyof typeof WIREFRAME_FARM_BEARINGS, distanceKm:
   );
 }
 
+const carrotReviews: Review[] = [
+  {
+    id: "cr1",
+    farmId: "carrot",
+    author: "김나미",
+    rating: 5,
+    content:
+      "흙 묻은 당근을 담아주셨는데 향이 진짜 달랐어요. 시중에서 파는 것보다 훨씬 달고 아삭해서 아이가 날것으로도 잘 먹더라고요. 다음에도 또 구매할게요!",
+    date: "2026.06.05",
+    imageUrl: assets.reviews.carrot.r2,
+  },
+  {
+    id: "cr2",
+    farmId: "carrot",
+    author: "박성우",
+    rating: 5,
+    content:
+      "농부님이 용도 물어보시고 볶음용으로 적당한 크기로 골라주셨어요. 이런 세심함은 마트에선 절대 경험 못 하죠. 당근 특유의 흙냄새가 싱싱함을 증명해줬습니다.",
+    date: "2026.06.01",
+    imageUrl: assets.reviews.carrot.r1,
+  },
+];
+
+const grapeReviews: Review[] = [
+  {
+    id: "gr1",
+    farmId: "grape",
+    author: "윤지호",
+    rating: 5,
+    content: "마트에서 사는 포도보다 훨씬 맛있네요. 신선도가 확실히 다릅니다.",
+    date: "2026.06.04",
+    imageUrl: assets.reviews.grape.r2,
+  },
+  {
+    id: "gr2",
+    farmId: "grape",
+    author: "김서연",
+    rating: 5,
+    content: "포도 향이 진하고 달콤합니다. 생산자분 설명도 친절해서 만족했어요.",
+    date: "2026.05.29",
+    imageUrl: assets.reviews.grape.r1,
+  },
+];
+
 const strawberryReviews: Review[] = [
   {
-    id: "r1",
+    id: "sr1",
     farmId: "strawberry",
-    author: "김지연",
+    author: "김하은",
     rating: 5,
-    content: "딸기가 맛있고 신선해요!\n\n아이들도 너무 잘 먹어요~",
+    content:
+      "상자 열자마자 새콤달콤한 향이 온 집안에 가득 차네요~ 알도 크고 단단해서 무른 것 하나 없이 깨끗합니다. 다 먹으면 또 주문할게요",
+    date: "2026.06.07",
+    imageUrl: assets.reviews.strawberry.r2,
+  },
+  {
+    id: "sr2",
+    farmId: "strawberry",
+    author: "이상미",
+    rating: 5,
+    content:
+      "마트에 딸기가 없더라고요. 그래서 농장에서 직접 주문해 본 건데, 바로 따고 받은 거라 그런지 꼭지도 싱싱하고 달달하니 맛있네요. ^^",
+    date: "2026.06.02",
+    imageUrl: assets.reviews.strawberry.r1,
+  },
+];
+
+const cornReviews: Review[] = [
+  {
+    id: "co-r1",
+    farmId: "corn",
+    author: "최지안",
+    rating: 5,
+    content: "삶아 먹으니 정말 달고 부드럽네요. 재구매 예정입니다.",
+    date: "2026.06.06",
+    imageUrl: assets.reviews.corn.r2,
+  },
+  {
+    id: "co-r2",
+    farmId: "corn",
+    author: "박민재",
+    rating: 5,
+    content: "직접 보고 구매하니 품질 확인이 가능해서 안심이 됐어요.",
+    date: "2026.05.31",
+    imageUrl: assets.reviews.corn.r1,
+  },
+];
+
+const potatoReviews: Review[] = [
+  {
+    id: "po-r1",
+    farmId: "potato",
+    author: "한소희",
+    rating: 5,
+    content:
+      "갓 수확한 햇감자를 직접 받아오니까 신선도가 달라요. 사장님이 보관 방법도 알려주셔서 오래 두고 먹을 수 있었어요. 앞으로 매년 여기서 살 거예요.",
+    date: "2026.06.03",
+    imageUrl: assets.reviews.potato.r2,
+  },
+  {
+    id: "po-r2",
+    farmId: "potato",
+    author: "박준혁",
+    rating: 5,
+    content:
+      "직접 농사지으신 분한테 사니까 믿음이 가요. 어떤 토양인지, 비료는 어떻게 쓰는지 설명도 해주시고 너무 친절하셨어요. 감자도 실하고 맛있었습니다.",
     date: "2026.05.27",
-    imageUrl: assets.reviewPhoto,
-  },
-  {
-    id: "r2",
-    farmId: "strawberry",
-    author: "김은별",
-    rating: 5,
-    content: "딸기가 달아요!\n온 가족이 맛있게 먹었네요!!",
-    date: "2026.05.25",
-  },
-  {
-    id: "r3",
-    farmId: "strawberry",
-    author: "박민수",
-    rating: 4.8,
-    content: "픽업도 편하고 신선해서 만족합니다.",
-    date: "2026.05.20",
+    imageUrl: assets.reviews.potato.r1,
   },
 ];
 
@@ -72,8 +155,8 @@ export const FARMS: Farm[] = [
     id: "carrot",
     name: "수비니비니 당근당근",
     distanceKm: 1.2,
-    rating: 4.6,
-    reviewCount: 14,
+    rating: 5.0,
+    reviewCount: 2,
     thumbnailUrl: assets.farms.carrot,
     mapMarkerUrl: assets.mapMarkers.carrot,
     isOrganic: true,
@@ -81,7 +164,7 @@ export const FARMS: Farm[] = [
     address: "경기도 광주시 남종면 당근리",
     phone: "010-2222-2222",
     heroImageUrl: assets.farms.carrot,
-    heroImages: [assets.farms.carrot],
+    heroImages: [assets.farms.carrot, assets.certificates.carrot],
     profileImageUrl: assets.farmerProfile,
     roadviewImageUrl: assets.farmRoadview,
     description:
@@ -97,21 +180,21 @@ export const FARMS: Farm[] = [
         imageUrl: assets.farms.carrot,
       },
     ],
-    reviews: [],
+    reviews: carrotReviews,
   },
   {
     id: "grape",
     name: "은순이네 포도 천국",
     distanceKm: 2.2,
     rating: 5.0,
-    reviewCount: 18,
+    reviewCount: 2,
     thumbnailUrl: assets.farms.grape,
     mapMarkerUrl: assets.mapMarkers.grape,
     pickupLocation: "서울 마포구 연남동",
     address: "경기도 이천시 포도마을",
     phone: "010-3333-3333",
     heroImageUrl: assets.farms.grape,
-    heroImages: [assets.farms.grape],
+    heroImages: [assets.farms.grape, assets.certificates.grape],
     profileImageUrl: assets.farmerProfile,
     roadviewImageUrl: assets.farmRoadview,
     description: "가족이 함께 키운 포도를 만나보세요. 당도 높은 포도가 자랑입니다.",
@@ -126,14 +209,14 @@ export const FARMS: Farm[] = [
         imageUrl: assets.farms.grape,
       },
     ],
-    reviews: [],
+    reviews: grapeReviews,
   },
   {
     id: "strawberry",
     name: "효연이가 키운 딸기",
     distanceKm: 2.4,
-    rating: 4.9,
-    reviewCount: 32,
+    rating: 5.0,
+    reviewCount: 2,
     thumbnailUrl: assets.farms.strawberry,
     mapMarkerUrl: assets.mapMarkers.strawberry,
     isOrganic: true,
@@ -141,7 +224,12 @@ export const FARMS: Farm[] = [
     address: "경기도 광주시 남종면 금사리",
     phone: "010-1111-1111",
     heroImageUrl: assets.storeHero,
-    heroImages: [assets.storeHero, assets.farms.strawberry, assets.products.strawberryGift],
+    heroImages: [
+      assets.storeHero,
+      assets.farms.strawberry,
+      assets.products.strawberryGift,
+      assets.certificates.strawberry,
+    ],
     profileImageUrl: assets.farmerProfile,
     roadviewImageUrl: assets.farmRoadview,
     description:
@@ -155,8 +243,8 @@ export const FARMS: Farm[] = [
     id: "corn",
     name: "윤경의 옥수수밭",
     distanceKm: 3.0,
-    rating: 4.6,
-    reviewCount: 14,
+    rating: 5.0,
+    reviewCount: 2,
     thumbnailUrl: assets.farms.corn,
     mapMarkerUrl: assets.mapMarkers.corn,
     isOrganic: true,
@@ -164,7 +252,7 @@ export const FARMS: Farm[] = [
     address: "충청남도 아산시 옥수수마을",
     phone: "010-4444-4444",
     heroImageUrl: assets.farms.corn,
-    heroImages: [assets.farms.corn],
+    heroImages: [assets.farms.corn, assets.certificates.corn],
     profileImageUrl: assets.farmerProfile,
     roadviewImageUrl: assets.farmRoadview,
     description: "아침에 수확한 옥수수를 바로 만나보세요.",
@@ -179,21 +267,21 @@ export const FARMS: Farm[] = [
         imageUrl: assets.farms.corn,
       },
     ],
-    reviews: [],
+    reviews: cornReviews,
   },
   {
     id: "potato",
     name: "예준이의 눈을 감자",
     distanceKm: 5.0,
-    rating: 4.3,
-    reviewCount: 14,
+    rating: 5.0,
+    reviewCount: 2,
     thumbnailUrl: assets.farms.potato,
     mapMarkerUrl: assets.mapMarkers.potato,
     pickupLocation: "서울 은평구 불광동",
     address: "강원도 평창군 감자마을",
     phone: "010-5555-5555",
     heroImageUrl: assets.farms.potato,
-    heroImages: [assets.farms.potato],
+    heroImages: [assets.farms.potato, assets.certificates.potato],
     profileImageUrl: assets.farmerProfile,
     roadviewImageUrl: assets.farmRoadview,
     description: "고랭지에서 자란 포슬포슬한 감자를 소개합니다.",
@@ -208,7 +296,7 @@ export const FARMS: Farm[] = [
         imageUrl: assets.farms.potato,
       },
     ],
-    reviews: [],
+    reviews: potatoReviews,
   },
 ];
 

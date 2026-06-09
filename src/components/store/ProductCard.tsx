@@ -28,9 +28,9 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         type="button"
         aria-label={`${product.name} 장바구니 담기`}
         onClick={onAddToCart}
-        className="shrink-0 transition-transform active:scale-95"
+        className="flex size-[38px] shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#33b266] transition-transform active:scale-95"
       >
-        <Image src={assets.cartIcon} alt="" width={38} height={38} />
+        <Image src={assets.cartIcon} alt="" width={22} height={22} />
       </button>
     </div>
   );

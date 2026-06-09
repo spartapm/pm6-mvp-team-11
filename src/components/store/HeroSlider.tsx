@@ -1,12 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type HeroSliderProps = {
   images: string[];
   alt: string;
 };
+
+function isCertificateSlide(src: string) {
+  return src.includes("/certificates/");
+}
 
 export default function HeroSlider({ images, alt }: HeroSliderProps) {
   const slides = images.length > 0 ? images : ["/images/logo.png"];
@@ -20,6 +24,13 @@ export default function HeroSlider({ images, alt }: HeroSliderProps) {
   const goPrev = useCallback(() => {
     setIndex((prev) => (prev - 1 + slides.length) % slides.length);
   }, [slides.length]);
+
+  useEffect(() => {
+    if (slides.length <= 1) return;
+
+    const timer = window.setInterval(goNext, 4000);
+    return () => window.clearInterval(timer);
+  }, [goNext, slides.length]);
 
   const handleTouchStart = (event: React.TouchEvent) => {
     touchStartX.current = event.touches[0]?.clientX ?? null;
@@ -36,47 +47,54 @@ export default function HeroSlider({ images, alt }: HeroSliderProps) {
 
   return (
     <div
-      className="relative h-[260px] w-full overflow-hidden"
+      className="relative h-[260px] w-full overflow-hidden bg-black"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <Image
-        src={slides[index]}
-        alt={alt}
-        fill
-        className="object-cover"
-        priority
-        sizes="390px"
-      />
-      {slides.length > 1 ? (
-        <>
-          <button
-            type="button"
-            aria-label="이전 사진"
-            onClick={goPrev}
-            className="absolute left-2 top-1/2 z-10 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white"
-          >
-            ⟨
-          </button>
-          <button
-            type="button"
-            aria-label="다음 사진"
-            onClick={goNext}
-            className="absolute right-2 top-1/2 z-10 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white"
-          >
-            ⟩
-          </button>
-          <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
-            {slides.map((_, dotIndex) => (
-              <span
-                key={dotIndex}
-                className={`size-1.5 rounded-full ${
-                  dotIndex === index ? "bg-white" : "bg-white/50"
-                }`}
+      <div
+        className="flex h-full transition-transform duration-500 ease-in-out"
+        style={{ transform: `translateX(-${index * 100}%)` }}
+      >
+        {slides.map((slide, slideIndex) => {
+          const isCertificate = isCertificateSlide(slide);
+
+          return (
+            <div
+              key={`${slide}-${slideIndex}`}
+              className={`relative h-full w-full shrink-0 ${
+                isCertificate ? "bg-[#f5f5f5]" : "bg-black"
+              }`}
+            >
+              <Image
+                src={slide}
+                alt={
+                  isCertificate ? `${alt} 사업자등록증` : `${alt} ${slideIndex + 1}`
+                }
+                fill
+                className={
+                  isCertificate ? "object-contain p-3" : "object-cover"
+                }
+                priority={slideIndex === 0}
+                sizes="390px"
               />
-            ))}
-          </div>
-        </>
+            </div>
+          );
+        })}
+      </div>
+      {slides.length > 1 ? (
+        <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
+          {slides.map((_, dotIndex) => (
+            <button
+              key={dotIndex}
+              type="button"
+              aria-label={`${dotIndex + 1}번째 사진`}
+              onClick={() => setIndex(dotIndex)}
+              className={`size-1.5 rounded-full ${
+                dotIndex === index ? "bg-white" : "bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
       ) : null}
     </div>
   );
